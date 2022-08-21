@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kgisl_gi/screens/home_screen.dart';
-import 'package:kgisl_gi/screens/about.dart';
-import 'package:kgisl_gi/widgets/dialog.dart';
+import 'package:kgisl_gi/screens/home.dart';
 
 void main() {
   runApp(KgislGI());
