@@ -24,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 elevation: 16,
                 style: const TextStyle(color: Colors.black),
                 underline: Container(),
+                iconSize: 15,
                 onChanged: (String? newValue) {
                   if (newValue == null) {
                     return;
@@ -32,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     dropDownValue = newValue;
                   });
                 },
-                items: <String>["Choose language", 'One', 'Two', 'Free', 'Four']
+                items: <String>["Choose language", 'English', 'Tamil', 'Hindi', 'Telugu']
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
@@ -69,12 +70,13 @@ class _HomeScreenState extends State<HomeScreen> {
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 20.0),
                             child: Text(
-                              "Enter your personal details",
+                              "Enter your personal details and start journey with us",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w300,
                               ),
+                              textAlign: TextAlign.center,
                             ),
                           ),
                           OutlinedButton(
