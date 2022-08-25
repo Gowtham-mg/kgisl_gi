@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kgisl_gi/widgets/menu.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,6 +14,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: SingleChildScrollView(

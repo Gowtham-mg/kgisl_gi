@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kgisl_gi/widgets/menu.dart';
 
 class FAQScreen extends StatelessWidget {
   FAQScreen({Key? key}) : super(key: key);
@@ -107,8 +108,15 @@ class FAQScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
+      backgroundColor: Colors.white,
       body: SafeArea(
-        child: Padding(
+        child: SingleChildScrollView(
           padding: const EdgeInsets.only(top: 30.0, left: 20, bottom: 40, right: 20),
           child: Column(
             children: [
@@ -120,35 +128,32 @@ class FAQScreen extends StatelessWidget {
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Expanded(
-                child: ListView(
-                  padding: EdgeInsets.only(top: 20),
-                  children: faqs
-                      .map((e) => ExpansionTile(
-                            title: Text(
-                              e.title,
-                              style: TextStyle(
-                                color: Colors.grey.shade600,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
+              Column(
+                children: faqs
+                    .map((e) => ExpansionTile(
+                          title: Text(
+                            e.title,
+                            style: TextStyle(
+                              color: Colors.grey.shade600,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500,
                             ),
-                            expandedCrossAxisAlignment: CrossAxisAlignment.start,
-                            expandedAlignment: Alignment.topLeft,
-                            collapsedIconColor: Colors.black,
-                            iconColor: Colors.black,
-                            childrenPadding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 20),
-                            children: [
-                              for (int i = 0; i < e.description.length; i++)
-                                Text(
-                                  e.description.length > 1 ? "${i + 1}. ${e.description[i]}" : e.description[i],
-                                  style: TextStyle(color: Colors.black, fontSize: 14),
-                                  textAlign: TextAlign.start,
-                                )
-                            ],
-                          ))
-                      .toList(),
-                ),
+                          ),
+                          expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                          expandedAlignment: Alignment.topLeft,
+                          collapsedIconColor: Colors.black,
+                          iconColor: Colors.black,
+                          childrenPadding: const EdgeInsets.only(left: 20.0, top: 10, bottom: 20),
+                          children: [
+                            for (int i = 0; i < e.description.length; i++)
+                              Text(
+                                e.description.length > 1 ? "${i + 1}. ${e.description[i]}" : e.description[i],
+                                style: TextStyle(color: Colors.black, fontSize: 14),
+                                textAlign: TextAlign.start,
+                              )
+                          ],
+                        ))
+                    .toList(),
               ),
             ],
           ),

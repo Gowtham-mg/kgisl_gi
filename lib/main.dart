@@ -18,7 +18,7 @@ class KgislGI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ContactUsScreen(),
+      home: HomeScreen(),
     );
   }
 }

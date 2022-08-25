@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kgisl_gi/widgets/menu.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class LatestNewsNEventsScreen extends StatelessWidget {
@@ -19,7 +20,7 @@ class LatestNewsNEventsScreen extends StatelessWidget {
     ),
     NewsItemModel(
       datePublished: "Date: JULY 30, 2016",
-      news: ">Paneer and the origin of cheese in India",
+      news: "Paneer and the origin of cheese in India",
       readMoreUrl:
           "https://www.thehindu.com/news/cities/mumbai/Paneer-and-the-origin-of-cheese-in-India/article14516958.ece",
     ),
@@ -28,6 +29,12 @@ class LatestNewsNEventsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Container(
@@ -39,99 +46,107 @@ class LatestNewsNEventsScreen extends StatelessWidget {
           ),
           padding: const EdgeInsets.only(left: 20, right: 20),
           margin: EdgeInsets.all(20),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 30.0, bottom: 10),
-                child: Text(
-                  "Latest News and Events",
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              ...news
-                  .map((e) => Container(
-                        decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.all(Radius.circular(12)),
-                        ),
-                        padding: EdgeInsets.all(10),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              e.datePublished,
-                              style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 16,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(top: 20, bottom: 10),
-                              child: Text(
-                                e.news,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                            ),
-                            TextButton(
-                              onPressed: () async {
-                                await launchUrlString(e.readMoreUrl);
-                              },
-                              child: Text(
-                                "Read More",
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              ),
-                              style: ButtonStyle(
-                                fixedSize: MaterialStateProperty.all(Size(200, 40)),
-                                backgroundColor: MaterialStateProperty.all(Colors.green),
-                                padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ))
-                  .toList(),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Text(
-                  "Haven't you register GI for your product?",
-                  style: TextStyle(
-                    color: Colors.black54,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0, bottom: 10),
-                child: TextButton(
-                  onPressed: () {},
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 30.0, bottom: 10),
                   child: Text(
-                    "Apply for GI",
+                    "Latest News and Events",
                     style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 14,
+                      color: Colors.black54,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                  style: ButtonStyle(
-                    fixedSize: MaterialStateProperty.all(Size(200, 40)),
-                    backgroundColor: MaterialStateProperty.all(Colors.green),
-                    padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
+                ),
+                ...news
+                    .map((e) => Container(
+                          decoration: BoxDecoration(
+                            color: Colors.black,
+                            borderRadius: BorderRadius.all(Radius.circular(12)),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          margin: EdgeInsets.only(bottom: 20),
+                          width: double.infinity,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                e.datePublished,
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 16,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 20, bottom: 10),
+                                child: Text(
+                                  e.news,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ),
+                              Center(
+                                child: TextButton(
+                                  onPressed: () async {
+                                    await launchUrlString(e.readMoreUrl);
+                                  },
+                                  child: Text(
+                                    "Read More",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  style: ButtonStyle(
+                                    fixedSize: MaterialStateProperty.all(Size(200, 40)),
+                                    backgroundColor: MaterialStateProperty.all(Colors.green),
+                                    padding:
+                                        MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ))
+                    .toList(),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    "Haven't you register GI for your product?",
+                    style: TextStyle(
+                      color: Colors.black54,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0, bottom: 10),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Apply for GI",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 14,
+                      ),
+                    ),
+                    style: ButtonStyle(
+                      fixedSize: MaterialStateProperty.all(Size(200, 40)),
+                      backgroundColor: MaterialStateProperty.all(Colors.green),
+                      padding: MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: 20, vertical: 10)),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

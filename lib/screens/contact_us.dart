@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kgisl_gi/widgets/menu.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class ContactUsScreen extends StatelessWidget {
@@ -7,6 +8,13 @@ class ContactUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Menu(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        iconTheme: IconThemeData(color: Colors.black),
+      ),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Center(
           child: Card(
